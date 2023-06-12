@@ -15,7 +15,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.martysh12.bnbnav.client.BnbnavModClient"
+      "com.martysh12.bnbnav.BnbnavModClient"
     ],
     "main": [
       "com.martysh12.bnbnav.BnbnavMod"

@@ -1,4 +1,4 @@
-package com.martysh12.bnbnav.client;
+package com.martysh12.bnbnav;
 
 import net.fabricmc.api.ClientModInitializer;
 

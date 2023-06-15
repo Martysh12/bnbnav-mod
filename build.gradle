@@ -23,8 +23,9 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    // DBus
-    implementation "com.github.hypfvieh:dbus-java:${project.dbus_java_version}"
+    // JSON-RPC
+    implementation "com.github.briandilley.jsonrpc4j:jsonrpc4j:${project.jsonrpc_version}"
+    implementation "com.kohlschutter.junixsocket:junixsocket-core:${project.junixsocket_version}"
 }
 
 processResources {

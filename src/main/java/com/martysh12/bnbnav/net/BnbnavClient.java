@@ -16,25 +16,17 @@ public class BnbnavClient {
     private final AFOutputStream out;
     private final AFInputStream in;
 
-    private final JsonRpcClient rpcClient;
+    private final NewlineDelimitingJsonRpcClient rpcClient;
 
     public BnbnavClient() throws IOException {
         this.sock = AFUNIXSocket.newInstance();
         this.sock.connect(AFUNIXSocketAddress.of(Path.of(System.getenv("XDG_RUNTIME_DIR"), "bnbnav")));
         this.out = this.sock.getOutputStream();
         this.in = this.sock.getInputStream();
-        this.rpcClient = new JsonRpcClient();
+        this.rpcClient = new NewlineDelimitingJsonRpcClient();
 
-    }
-
-    private void writeNewline() throws IOException {
-        this.out.write("\r\n".getBytes());
-        this.out.flush();
     }
     public String ping() throws Throwable {
-        BnbnavMod.logger.debug("Pinging");
-        String response = this.rpcClient.invokeAndReadResponse("Ping", null, String.class, this.out, this.in);
-        this.writeNewline();
-        return response;
+        return this.rpcClient.invokeAndReadResponse("Ping", null, String.class, this.out, this.in);
     }
 }

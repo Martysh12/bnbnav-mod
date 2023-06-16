@@ -26,6 +26,7 @@ dependencies {
     // JSON-RPC
     implementation "com.github.briandilley.jsonrpc4j:jsonrpc4j:${project.jsonrpc_version}"
     implementation "com.kohlschutter.junixsocket:junixsocket-core:${project.junixsocket_version}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${project.jackson_version}"
 }
 
 processResources {

@@ -2,9 +2,10 @@ package com.martysh12.bnbnav;
 
 import com.martysh12.bnbnav.net.BnbnavClient;
 import net.fabricmc.api.ClientModInitializer;
-import org.lwjgl.system.CallbackI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class BnbnavMod implements ClientModInitializer {
     /**
@@ -16,6 +17,10 @@ public class BnbnavMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        try {
+            BnbnavMod.connection = new BnbnavClient();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

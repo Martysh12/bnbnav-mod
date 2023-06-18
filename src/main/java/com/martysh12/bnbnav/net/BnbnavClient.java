@@ -62,8 +62,6 @@ public class BnbnavClient {
                 try {
                     // Reconnect if not connected;
                     if (!this.isConnected() || !this.sock.isBound()) {
-                        BnbnavMod.logger.info("Not connected, connecting...");
-
                         if (!this.sock.isBound()) {
                             // Create a new instance if the socket is not bound
                             BnbnavMod.logger.info("Socket is not bound anymore, creating new instance");
@@ -71,11 +69,8 @@ public class BnbnavClient {
                         }
 
                         this.sock.connect(AFUNIXSocketAddress.of(Path.of(System.getenv("XDG_RUNTIME_DIR"), "bnbnav")));
-                    } else {
-                        BnbnavMod.logger.info("Connected, doing nothing.");
                     }
-                } catch (IOException e) {
-                    BnbnavMod.logger.error("Error happened! " + e.getMessage());
+                } catch (IOException ignored) {
                 }
 
                 try {
